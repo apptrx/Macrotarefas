@@ -10,16 +10,6 @@ body {
   min-height: 100vh;
 }
 
-.evento {
-  margin: 30px 0;
-  padding: 25px;
-  background-color: rgba(255, 255, 255, 0.03); 
-  border: 1px solid rgba(255, 255, 255, 0.08); 
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease;
-}
-
 
 .container {
   background-color: rgba(0, 0, 0, 0.65);
@@ -30,6 +20,16 @@ body {
   width: 90%;
   text-align: center;
   animation: fadeIn 1s ease-in;
+}
+
+.evento {
+  margin: 30px 0;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
 }
 
 h1 {
