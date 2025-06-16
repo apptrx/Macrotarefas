@@ -1,5 +1,3 @@
-alert("JS rodando");
-
 const eventos = [
   { id: 1, data: new Date("June 30, 2025 19:00:00") },
   { id: 2, data: new Date("July 15, 2025 13:00:00") }
@@ -7,10 +5,6 @@ const eventos = [
 
 eventos.forEach(evento => {
   const contagemEl = document.getElementById("contagem" + evento.id);
-  if (!contagemEl) {
-    console.log("Elemento não encontrado:", "contagem" + evento.id);
-    return;
-  }
 
   const interval = setInterval(() => {
     const agora = new Date().getTime();
