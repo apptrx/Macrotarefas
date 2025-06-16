@@ -10,12 +10,23 @@ body {
   min-height: 100vh;
 }
 
+.evento {
+  margin: 30px 0;
+  padding: 25px;
+  background-color: rgba(255, 255, 255, 0.03); 
+  border: 1px solid rgba(255, 255, 255, 0.08); 
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+
 .container {
   background-color: rgba(0, 0, 0, 0.65);
   padding: 40px;
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-  max-width: 600px;
+  max-width: 800px;
   width: 90%;
   text-align: center;
   animation: fadeIn 1s ease-in;
@@ -32,14 +43,14 @@ h1 {
   margin: 8px 0;
 }
 
-.countdown-box {
+.contagem-mae {
   margin-top: 30px;
   background-color: #121212;
   padding: 20px;
   border-radius: 8px;
 }
 
-.countdown {
+.contagem {
   font-size: 1.8em;
   font-weight: bold;
   margin-top: 10px;
@@ -67,13 +78,13 @@ h1 {
   margin-top: 20px;
   font-size: 1.2em;
   color: #00ffae;
-  opacity: 0;
   transition: opacity 0.5s ease;
 }
 
 .mensagem.show {
   opacity: 1;
 }
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }

@@ -3,25 +3,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Evento do Ano</title>
+  <title>Eventos</title>
   <link rel="stylesheet" href="/static/css/pagina.css">
-  <script src="/static/js/pagina.js" defer></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <h1>🔥 FESTA DEV 2025 🔥</h1>
-    <p class="info"><strong>📅 Data:</strong> 30/06/2025</p>
-    <p class="info"><strong>📍 Local:</strong> Auditório Central da UniTech</p>
-    <p class="info"><strong>🕖 Horário:</strong> 19h</p>
+    <h1> EVENTOS 2025 </h1>
 
-    <div class="countdown-box">
-      <h2>⏳ Contagem Regressiva</h2>
-      <div id="countdown" class="countdown">Carregando...</div>
+    <div class="evento">
+      <h2>FESTA 2025</h2>
+      <p>Data: 30/06/2025</p>
+      <p>Local: Auditório Central da UnB</p>
+      <p>Horário: 19h</p>
+
+      <div class="contagem-mae">
+        <h3>⏳ Contagem Regressiva</h3>
+        <div class="contagem" id="contagem1">Carregando...</div>
+      </div>
+
+      <button class="btn" onclick="confirmarPresenca(1)">Confirmar Presença</button>
+      <p class="mensagem" id="mensagem1"></p>
     </div>
 
-    <button class="btn" onclick="confirmarPresenca()">Confirmar Presença</button>
-    <p id="confirmacao" class="mensagem"></p>
+    <div class="evento">
+      <h2>INTENSIVÃO FULLSTACK</h2>
+      <p>Data: 15/07/2025</p>
+      <p>Local: LTDEA</p>
+      <p>Horário: 13h</p>
+
+      <div class="contagem-mae">
+        <h3>⏳ Contagem Regressiva</h3>
+        <div class="contagem" id="contagem2">Carregando...</div>
+      </div>
+
+      <button class="btn" onclick="confirmarPresenca(2)">Confirmar Presença</button>
+      <p class="mensagem" id="mensagem2"></p>
+    </div>
+
+
   </div>
+<script src="/static/js/pagina.js"></script>
 </body>
-</html>
+
+
