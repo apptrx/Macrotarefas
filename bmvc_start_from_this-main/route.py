@@ -29,13 +29,23 @@ def listar_eventos():
 
 @app.route('/eventos/adicionar', method='POST')
 def adicionar_evento():
-    if request.headers.get('Content-Type') == 'application/json':
-        data = request.json
-    else:
-        data = request.forms
+    import json
 
-    ctl.models.adicionar_evento_manual(data)
-    return {"status": "ok"}
+    try:
+        raw_data = request.body.read().decode('utf-8')
+        print("RAW JSON:", raw_data)
+
+        data = json.loads(raw_data)
+        print("PARSED:", data)
+
+        ctl.models.adicionar_evento_manual(data)
+        return {"status": "ok"}
+
+    except Exception as e:
+        print("ERRO AO ADICIONAR EVENTO:", e)
+        response.status = 500
+        return {"status": "erro", "detalhe": str(e)}
+
 
 @app.route('/eventos/deletar/<nome>', method='GET')
 def deletar_evento(nome):
