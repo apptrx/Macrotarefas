@@ -1,28 +1,33 @@
-// Coleta todos os elementos de evento na página
 const eventos = Array.from(document.querySelectorAll('.evento')).map((eventoDiv, index) => {
   const dataTexto = eventoDiv.querySelector('p:nth-of-type(1)').innerText.replace('Data: ', '').trim();
   const horarioTexto = eventoDiv.querySelector('p:nth-of-type(3)').innerText.replace('Horário: ', '').trim();
 
-  // Ajusta horário (ex: "19h" => "19:00")
-  const horarioAjustado = horarioTexto.replace('h', ':00');
-
-  // Ajusta data (br -> iso)
+  // Converte data para YYYY-MM-DD
   const [dia, mes, ano] = dataTexto.split('/');
-  const dataFormatada = `${ano}-${mes}-${dia} ${horarioAjustado}`;
+  // Ajusta horário: de 19h vira 19:00
+  const horarioLimpo = horarioTexto.replace('h', ':00');
+
+  // Monta data no formato ISO
+  const dataIso = `${ano}-${mes}-${dia}T${horarioLimpo}`;
 
   return {
     id: index + 1,
-    data: new Date(dataFormatada)
+    data: new Date(dataIso)
   };
 });
 
-// Para cada evento, cria o setInterval da contagem
 eventos.forEach(evento => {
   const contagemEl = document.getElementById(`contagem${evento.id}`);
 
   const interval = setInterval(() => {
     const agora = new Date().getTime();
     const distancia = evento.data.getTime() - agora;
+
+    if (isNaN(evento.data.getTime())) {
+      contagemEl.innerText = "Data inválida!";
+      clearInterval(interval);
+      return;
+    }
 
     if (distancia < 0) {
       contagemEl.innerText = "Esse evento já começou!";
