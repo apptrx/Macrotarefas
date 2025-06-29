@@ -11,7 +11,7 @@
   <div class="container">
     <h1>EVENTOS 2025</h1>
 
-    % for e in eventos:
+    % for i, e in enumerate(eventos, start=1):
     <div class="evento">
       <h2>{{e.nome}}</h2>
       <p>Data: {{e.data}}</p>
@@ -20,11 +20,11 @@
 
       <div class="contagem-mae">
         <h3>⏳ Contagem Regressiva</h3>
-        <div class="contagem" id="contagem{{loop.index}}">Carregando...</div>
+        <div class="contagem" id="contagem{{i}}">Carregando...</div>
       </div>
 
-      <button class="btn" onclick="confirmarPresenca({{loop.index}})">Confirmar Presença</button>
-      <p class="mensagem" id="mensagem{{loop.index}}"></p>
+      <button class="btn" onclick="confirmarPresenca({{i}})">Confirmar Presença</button>
+      <p class="mensagem" id="mensagem{{i}}"></p>
 
       <a href="/eventos/deletar/{{e.nome.replace(' ', '_')}}" style="color: red;">Remover</a>
     </div>
