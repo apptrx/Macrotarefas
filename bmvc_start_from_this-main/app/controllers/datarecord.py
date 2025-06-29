@@ -1,5 +1,5 @@
 # app/controllers/datarecord.py
-from app.models.evento import Evento
+from app.models.eventos import Evento
 import json
 
 class DataRecord:
@@ -27,5 +27,7 @@ class DataRecord:
         self.salvar()
 
     def deletar(self, nome):
+        nome = nome.replace('_', ' ')
         self.eventos = [e for e in self.eventos if e.nome != nome]
         self.salvar()
+
