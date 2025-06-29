@@ -1,10 +1,24 @@
-const eventos = [
-  { id: 1, data: new Date("June 30, 2025 19:00:00") },
-  { id: 2, data: new Date("July 15, 2025 13:00:00") }
-];
+// Coleta todos os elementos de contagem na página
+const contagens = document.querySelectorAll('.contagem');
 
+// Gera uma lista de eventos com suas datas convertidas
+const eventos = Array.from(contagens).map((el, index) => {
+  // Acha o card do evento
+  const eventoDiv = el.closest('.evento');
+  // Pega a data e horário dos <p>
+  const dataTexto = eventoDiv.querySelector('p:nth-of-type(1)').innerText.replace('Data: ', '');
+  const horarioTexto = eventoDiv.querySelector('p:nth-of-type(3)').innerText.replace('Horário: ', '');
+
+  // Junta data e horário em um único Date
+  return {
+    id: index + 1,
+    data: new Date(`${dataTexto} ${horarioTexto}`)
+  };
+});
+
+// Para cada evento, cria o setInterval da contagem
 eventos.forEach(evento => {
-  const contagemEl = document.getElementById("contagem" + evento.id);
+  const contagemEl = document.getElementById(`contagem${evento.id}`);
 
   const interval = setInterval(() => {
     const agora = new Date().getTime();
@@ -25,13 +39,11 @@ eventos.forEach(evento => {
   }, 1000);
 });
 
+// Função do botão de presença
 function confirmarPresenca(id) {
-  const msg = document.getElementById("mensagem" + id);
-  if (!msg) {
-    console.log("Mensagem não encontrada:", "mensagem" + id);
-    return;
+  const msg = document.getElementById(`mensagem${id}`);
+  if (msg) {
+    msg.innerText = "✅ Presença confirmada! Te esperamos lá!";
+    msg.classList.add("show");
   }
-
-  msg.innerText = "✅ Presença confirmada! Te esperamos lá!";
-  msg.classList.add("show");
 }

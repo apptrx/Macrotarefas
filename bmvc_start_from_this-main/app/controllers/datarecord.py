@@ -1,5 +1,5 @@
 # app/controllers/datarecord.py
-from app.models.eventos import Evento
+from app.models.evento import Evento
 import json
 
 class DataRecord:

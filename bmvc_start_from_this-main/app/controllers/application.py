@@ -1,5 +1,4 @@
 from app.controllers.datarecord import DataRecord
-from bottle import template
 from bottle import template, redirect, request
 
 
