@@ -1,18 +1,18 @@
-// Coleta todos os elementos de contagem na página
-const contagens = document.querySelectorAll('.contagem');
+// Coleta todos os elementos de evento na página
+const eventos = Array.from(document.querySelectorAll('.evento')).map((eventoDiv, index) => {
+  const dataTexto = eventoDiv.querySelector('p:nth-of-type(1)').innerText.replace('Data: ', '').trim();
+  const horarioTexto = eventoDiv.querySelector('p:nth-of-type(3)').innerText.replace('Horário: ', '').trim();
 
-// Gera uma lista de eventos com suas datas convertidas
-const eventos = Array.from(contagens).map((el, index) => {
-  // Acha o card do evento
-  const eventoDiv = el.closest('.evento');
-  // Pega a data e horário dos <p>
-  const dataTexto = eventoDiv.querySelector('p:nth-of-type(1)').innerText.replace('Data: ', '');
-  const horarioTexto = eventoDiv.querySelector('p:nth-of-type(3)').innerText.replace('Horário: ', '');
+  // Ajusta horário (ex: "19h" => "19:00")
+  const horarioAjustado = horarioTexto.replace('h', ':00');
 
-  // Junta data e horário em um único Date
+  // Ajusta data (br -> iso)
+  const [dia, mes, ano] = dataTexto.split('/');
+  const dataFormatada = `${ano}-${mes}-${dia} ${horarioAjustado}`;
+
   return {
     id: index + 1,
-    data: new Date(`${dataTexto} ${horarioTexto}`)
+    data: new Date(dataFormatada)
   };
 });
 
@@ -39,7 +39,6 @@ eventos.forEach(evento => {
   }, 1000);
 });
 
-// Função do botão de presença
 function confirmarPresenca(id) {
   const msg = document.getElementById(`mensagem${id}`);
   if (msg) {

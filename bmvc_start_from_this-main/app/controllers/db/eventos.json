@@ -1,4 +1,20 @@
 [
-  { "nome": "Festa 2025", "data": "30/06/2025", "local": "Auditório Central da UnB", "horario": "19h" },
-  { "nome": "Intensivão Fullstack", "data": "15/07/2025", "local": "LTDEA", "horario": "13h" }
+  {
+    "nome": "Festa 2025",
+    "data": "30/06/2025",
+    "local": "Audit\u00c3\u00b3rio Central da UnB",
+    "horario": "19h"
+  },
+  {
+    "nome": "Intensiv\u00c3\u00a3o Fullstack",
+    "data": "15/07/2025",
+    "local": "LTDEA",
+    "horario": "13h"
+  },
+  {
+    "nome": "Anivers\u00c3\u00a1rio ",
+    "data": "31/01/2005",
+    "local": "Minha Casa da Silva",
+    "horario": "12:00"
+  }
 ]
