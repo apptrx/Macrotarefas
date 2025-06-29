@@ -30,3 +30,16 @@ class DataRecord:
         nome = nome.replace('_', ' ')
         self.eventos = [e for e in self.eventos if e.nome != nome]
         self.salvar()
+
+    def adicionar_evento_manual(self, data):
+        nome = data.get("nome")
+        data_evento = data.get("data")
+        local = data.get("local")
+        horario = data.get("horario")
+
+        if not nome or not data_evento or not local or not horario:
+            raise ValueError("Dados incompletos para o evento.")
+
+        evento = Evento(nome, data_evento, local, horario)
+        self.adicionar(evento)
+
