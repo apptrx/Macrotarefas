@@ -1,21 +1,25 @@
+from app.controllers.datarecord import DataRecord
 from bottle import template
+from bottle import template, redirect, request
 
 
-class Application():
-
+class Application:
     def __init__(self):
+        self.models = DataRecord()
         self.pages = {
-            'helper': self.helper,
             'pagina': self.pagina
-        }   
+        }
 
-    def render(self,page):
-       content = self.pages.get(page, self.helper)
-       return content()
+    def render(self, page, parameter=None):
+        content = self.pages.get(page, self.helper)
+        if not parameter:
+            return content()
+        else:
+            return content(parameter)
+
+    def pagina(self):
+        lista = self.models.listar()
+        return template('app/views/html/pagina', eventos=lista)
 
     def helper(self):
         return template('app/views/html/helper')
-    
-    def pagina(self):
-        return template('app/views/html/pagina', noescape=True)
-
