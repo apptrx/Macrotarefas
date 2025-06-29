@@ -1,5 +1,5 @@
 from app.controllers.application import Application
-from app.models.eventos import Evento
+from app.models.evento import Evento
 from bottle import Bottle, route, run, request, static_file, redirect, template, response
 
 app = Bottle()
