@@ -31,13 +31,14 @@
     % end
 
     <h3>Adicionar Novo Evento</h3>
-    <form action="/eventos/adicionar" method="post">
+    <form id="formEvento">
       <input type="text" name="nome" placeholder="Nome do evento" required><br>
       <input type="text" name="data" placeholder="Data (ex: 30/06/2025)" required><br>
       <input type="text" name="local" placeholder="Local" required><br>
       <input type="text" name="horario" placeholder="Horário" required><br>
       <button type="submit">Adicionar</button>
     </form>
+
   </div>
 
   <script src="/static/js/pagina.js"></script>

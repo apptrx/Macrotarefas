@@ -29,15 +29,13 @@ def listar_eventos():
 
 @app.route('/eventos/adicionar', method='POST')
 def adicionar_evento():
-    nome = request.forms.get('nome')
-    data = request.forms.get('data')
-    local = request.forms.get('local')
-    horario = request.forms.get('horario')
-    
-    if nome and data and local and horario:
-        ctl.models.adicionar(Evento(nome, data, local, horario))
-    
-    redirect('/eventos')
+    if request.headers.get('Content-Type') == 'application/json':
+        data = request.json
+    else:
+        data = request.forms
+
+    ctl.models.adicionar_evento_manual(data)
+    return {"status": "ok"}
 
 @app.route('/eventos/deletar/<nome>', method='GET')
 def deletar_evento(nome):

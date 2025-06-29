@@ -51,3 +51,31 @@ function confirmarPresenca(id) {
     msg.classList.add("show");
   }
 }
+
+document.getElementById("formEvento").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+
+  const dados = {
+    nome: formData.get("nome"),
+    data: formData.get("data"),
+    local: formData.get("local"),
+    horario: formData.get("horario")
+  };
+
+  const resposta = await fetch("/eventos/adicionar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+
+  if (resposta.ok) {
+    location.reload(); // recarrega só depois do sucesso
+  } else {
+    alert("Erro ao adicionar evento!");
+  }
+});
+
