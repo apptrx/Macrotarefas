@@ -1,10 +1,15 @@
-# app/controllers/datarecord.py
 from app.models.evento import Evento
+from app.models.user_account import UserAccount
+import uuid
 import json
 
 class DataRecord:
     def __init__(self):
         self.eventos = []
+        self.__user_accounts = []
+        self.__authenticated_users = {}
+        self.carregar_usuarios()
+
         self.carregar()
 
     def carregar(self):
@@ -42,4 +47,28 @@ class DataRecord:
 
         evento = Evento(nome, data_evento, local, horario)
         self.adicionar(evento)
+    def carregar_usuarios(self):
+        try:
+            with open("app/controllers/db/usuarios.json", "r", encoding="utf-8") as f:
+                dados = json.load(f)
+                self.__user_accounts = [UserAccount(**u) for u in dados]
+        except FileNotFoundError:
+            self.__user_accounts = [UserAccount("admin", "admin")]
+
+    def check_user(self, username, password):
+        for user in self.__user_accounts:
+            if user.username == username and user.password == password:
+                session_id = str(uuid.uuid4())
+                self.__authenticated_users[session_id] = user
+                return session_id
+        return None
+
+    def get_username(self, session_id):
+        if session_id in self.__authenticated_users:
+            return self.__authenticated_users[session_id].username
+        return None
+
+    def logout(self, session_id):
+        if session_id in self.__authenticated_users:
+            del self.__authenticated_users[session_id]
 
