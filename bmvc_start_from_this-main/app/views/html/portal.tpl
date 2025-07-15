@@ -1,6 +1,23 @@
-<h1>Login</h1>
-<form action="/portal" method="post">
-  <input type="text" name="username" placeholder="Usuário" required>
-  <input type="password" name="password" placeholder="Senha" required>
-  <button type="submit">Entrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="/static/css/pagina.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1> Acesso Restrito</h1>
+
+    <form action="/portal" method="post">
+      <input type="text" name="username" placeholder="Usuário" required>
+      <input type="password" name="password" placeholder="Senha" required>
+      <button type="submit">Entrar</button>
+    </form>
+
+    <p style="margin-top: 20px;">Tente <b>admin/admin</b> ou <b>matheus/123</b></p>
+  </div>
+</body>
+</html>
