@@ -18,8 +18,15 @@ class Application:
             return content(parameter)
 
     def pagina(self):
+        session_id = self.get_session_id()
+        username = self.models.get_username(session_id)
+
+        if not username:
+            redirect("/portal")
+        
         lista = self.models.listar()
         return template('app/views/html/pagina', eventos=lista)
+
 
     def helper(self):
         return template('app/views/html/helper')

@@ -56,7 +56,13 @@ def do_login():
     if session_id:
         redirect(f"/restrito/{username}")
     else:
-        return "<h2>Login inválido</h2>"
+        return '''
+            <script>
+            alert("❌ Usuário ou senha inválidos!");
+            window.location.href = "/portal";
+            </script>
+            '''
+
 
 @app.route('/restrito/<username>', method='GET')
 def acessar_area(username):
