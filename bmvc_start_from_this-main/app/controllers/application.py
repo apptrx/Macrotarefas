@@ -56,3 +56,11 @@ class Application:
             return template("app/views/html/pagina", eventos=lista)
         else:
             redirect("/portal")
+
+    def cadastro(self):
+        return template('app/views/html/cadastro')
+
+    def cadastrar_usuario(self, username, password):
+        sucesso = self.models.cadastrar_usuario(username, password)
+        return sucesso
+

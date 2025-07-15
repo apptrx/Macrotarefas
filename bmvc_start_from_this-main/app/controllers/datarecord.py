@@ -72,3 +72,17 @@ class DataRecord:
         if session_id in self.__authenticated_users:
             del self.__authenticated_users[session_id]
 
+    def cadastrar_usuario(self, username, password):
+        for u in self.__user_accounts:
+            if u.username == username:
+                return False  # Já existe
+
+        novo = UserAccount(username, password)
+        self.__user_accounts.append(novo)
+
+        with open("app/controllers/db/usuarios.json", "w", encoding="utf-8") as f:
+            json.dump([vars(u) for u in self.__user_accounts], f, indent=2, ensure_ascii=False)
+        
+        return True
+
+

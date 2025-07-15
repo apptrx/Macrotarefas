@@ -62,6 +62,32 @@ def do_login():
             window.location.href = "/portal";
             </script>
             '''
+    
+@app.route('/cadastro', method='GET')
+def show_cadastro():
+    return ctl.cadastro()
+
+@app.route('/cadastro', method='POST')
+def do_cadastro():
+    username = request.forms.get("username")
+    password = request.forms.get("password")
+    sucesso = ctl.cadastrar_usuario(username, password)
+
+    if sucesso:
+        return '''
+        <script>
+          alert("✅ Usuário criado com sucesso! Faça login.");
+          window.location.href = "/portal";
+        </script>
+        '''
+    else:
+        return '''
+        <script>
+          alert("❌ Usuário já existe!");
+          window.location.href = "/cadastro";
+        </script>
+        '''
+
 
 
 @app.route('/restrito/<username>', method='GET')

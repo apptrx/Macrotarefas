@@ -15,6 +15,10 @@
       <input type="text" name="username" placeholder="Usuário" required>
       <input type="password" name="password" placeholder="Senha" required>
       <button type="submit">Entrar</button>
+      <p style="margin-top: 15px;">
+        <a href="/cadastro">Não tem conta? Cadastre-se</a>
+      </p>
+
     </form>
 
     <p style="margin-top: 20px;">Tente <b>admin/admin</b> ou <b>matheus/123</b></p>
