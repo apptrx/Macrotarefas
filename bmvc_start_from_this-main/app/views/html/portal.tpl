@@ -21,7 +21,6 @@
 
     </form>
 
-    <p style="margin-top: 20px;">Tente <b>admin/admin</b> ou <b>matheus/123</b></p>
   </div>
 </body>
 </html>
