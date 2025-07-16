@@ -10,7 +10,8 @@
 <body>
   <div class="container">
     <h1>EVENTOS 2025</h1>
-    <h2> Bem-vindo(a), {{current_user}}!</h2>
+    <h2>Bem-vindo(a), {{current_user.capitalize()}}!</h2>
+
 
 
     % for i, e in enumerate(eventos, start=1):
@@ -41,7 +42,7 @@
       <button type="submit">Adicionar</button>
     </form>
     <form action="/logout" method="post" style="margin-top: 40px;">
-      <button type="submit" class="btn">Sair da conta de {{current_user}}</button>
+      <button type="submit" class="btn">Sair da conta de {{current_user.capitalize()}}</button>
     </form>
 
   </div>
