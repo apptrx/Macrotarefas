@@ -10,6 +10,8 @@
 <body>
   <div class="container">
     <h1>EVENTOS 2025</h1>
+    <h2> Bem-vindo(a), {{current_user}}!</h2>
+
 
     % for i, e in enumerate(eventos, start=1):
     <div class="evento">
@@ -37,6 +39,9 @@
       <input type="text" name="local" placeholder="Local" required><br>
       <input type="text" name="horario" placeholder="Horário" required><br>
       <button type="submit">Adicionar</button>
+    </form>
+    <form action="/logout" method="post" style="margin-top: 40px;">
+      <button type="submit" class="btn">Sair da conta de {{current_user}}</button>
     </form>
 
   </div>

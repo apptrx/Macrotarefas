@@ -53,9 +53,10 @@ class Application:
     def pagina_restrita(self, username):
         if self.is_authenticated(username):
             lista = self.models.listar()
-            return template("app/views/html/pagina", eventos=lista)
+            return template("app/views/html/pagina", eventos=lista, current_user=username)
         else:
             redirect("/portal")
+
 
     def cadastro(self):
         return template('app/views/html/cadastro')
