@@ -23,9 +23,10 @@ class Application:
 
         if not username:
             redirect("/portal")
-        
+    
         lista = self.models.listar()
-        return template('app/views/html/pagina', eventos=lista)
+        return template('app/views/html/pagina', eventos=lista, current_user=username)
+
 
 
     def helper(self):
